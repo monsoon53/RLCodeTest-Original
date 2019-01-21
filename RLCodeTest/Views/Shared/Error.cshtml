@@ -1,0 +1,28 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Error</title>
+</head>
+<body>
+    <hgroup>
+        <h1>Error.</h1>
+        <h2>An error occurred while processing your request.</h2>
+    </hgroup>
+    @if (HttpContext.Current.IsDebuggingEnabled)
+    {
+        if (Model != null && Model.Exception != null)
+        {
+            <br />
+            <h4>Path: @string.Format("{0}/{1}", Model.ControllerName, Model.ActionName)</h4>
+            <h4>Error: @Model.Exception.GetType().Name</h4>
+            if (Request.IsLocal)
+            {
+                <h4>Message: @Model.Exception.Message</h4>
+                <h5>@Model.Exception.StackTrace</h5>
+            }
+        }
+    }
+</body>
+</html>

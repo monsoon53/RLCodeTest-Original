@@ -1,0 +1,51 @@
+﻿@model RLCodeTest.Models.ViewModels.MaturityDataViewModel
+@{
+    ViewBag.Title = "Maturity Data";
+}
+@if (Model.MaturityDataResults != null && Model.MaturityDataResults.Any())
+{
+    <br />
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Policy Number</th>
+                <th>Policy Start Date</th>
+                <th>Premiums</th>
+                <th>Membership</th>
+                <th>Discretionary Bonus</th>
+                <th>Uplift Percentage</th>
+                <th>Policy Type</th>
+                <th>Management Fee Percentage</th>
+                <th>Discretionary Bonus Eligibility</th>
+                <th>Maturity Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.MaturityDataResults)
+            {
+                <tr>
+                    <td class="text">@item.PolicyNumber</td>
+                    <td class="text">@item.PolicyStartDate.ToString("dd/MM/yyyy")</td>
+                    <td class="text">@item.Premiums</td>
+                    <td class="text">@(item.Membership == true ? "Yes" : "No")</td>
+                    <td class="text">@item.DiscretionaryBonus</td>
+                    <td class="text">@item.UpliftPercentage%</td>
+                    <td class="text">@item.PolicyType</td>
+                    <td class="text">@item.ManagementFeePercentage%</td>
+                    <td class="text">@(item.DiscretionaryBonusEligibility == true ? "Yes" : "No")</td>
+                    <td class="text">£@item.MaturityValue.ToString("N2")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    if (Model.XMLFileGenerated)
+    {
+        <p><b>Generated XML file location ~/bin/GeneratedXML/MaturityData.xml</b></p>
+    }
+    else
+    {
+        <p><b>Error generating XML file</b></p>
+    }
+}
+
