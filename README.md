@@ -8,8 +8,6 @@ The application doesn’t require any user interaction, if you just run it from 
 
 In order to create loosely coupled code, and add some unit tests to the solution, I’ve used Ninject to implement dependency injection. 
 
-Additional note – I’ve removed all the nuget packages from the packages folder in the root of the solution to shrink down the size of the zip file so you’ll need to do a restore in the package manager console before running the application.
-
 Additional Nuget Packages
 * RLCodeTest
   * Ninject.MVC5
